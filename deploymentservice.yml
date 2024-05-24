@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flipkart
-          image: ekart
+          image: 975049945075.dkr.ecr.us-east-1.amazonaws.com/ekart
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8070
