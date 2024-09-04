@@ -64,8 +64,8 @@ resource "aws_security_group" "test_sg" {
     }
 
     ingress {
-        from_port = "3000-9000"
-        to_port = "3000-9000"
+        from_port = "3000"
+        to_port = "9000"
         protocol = "TCP"
         cidr_blocks = ["0.0.0.0/0"]
     }
