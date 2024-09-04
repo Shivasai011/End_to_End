@@ -22,8 +22,8 @@ chmod +x /tmp/kubectl
 sudo mv /tmp/kubectl /usr/local/bin
 
 # Configure AWS CLI with the provided credentials
-#aws configure set aws_access_key_id "$value_of_access"
-#aws configure set aws_secret_access_key "$value_of_secret"
+aws configure set aws_access_key_id "$value_of_access"
+aws configure set aws_secret_access_key "$value_of_secret"
 aws configure set default.region us-east-1
 aws configure set output json
 
