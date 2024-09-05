@@ -1,11 +1,11 @@
 #!/bin/bash
-set -e  # Exit immediately if a command exits with a non-zero status
+#set -e  # Exit immediately if a command exits with a non-zero status
 
 # Check if AWS credentials are set
-if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
-    echo "AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be set."
-    exit 1
-fi
+#if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+#    echo "AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY must be set."
+#    exit 1
+#fi
 
 sudo apt-get update -y
 
@@ -22,10 +22,10 @@ chmod +x /tmp/kubectl
 sudo mv /tmp/kubectl /usr/local/bin
 
 # Configure AWS CLI with the provided credentials
-aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
-aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
-aws configure set default.region "us-east-1"
-aws configure set output json
+#aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+#aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+#aws configure set default.region "us-east-1"
+#aws configure set output json
 
 # Verify installations
 aws --version
@@ -35,18 +35,18 @@ kubectl version --client
 echo "AWS CLI, eksctl, and kubectl have been installed and configured successfully."
 
 # Get public and private subnet IDs
-PUBLIC_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=public_subnet,public2_subnet" --query "Subnets[*].SubnetId" --output text)
-PRIVATE_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=private_subnet,private2_subnet" --query "Subnets[*].SubnetId" --output text)
+#PUBLIC_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=public_subnet,public2_subnet" --query "Subnets[*].SubnetId" --output text)
+#PRIVATE_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=private_subnet,private2_subnet" --query "Subnets[*].SubnetId" --output text)
 
 # Create EKS cluster
-eksctl create cluster \
-  --name EKS \
-  --region us-east-1 \
-  --nodegroup-name workers \
-  --node-type t3.small \
-  --vpc-public-subnets "$PUBLIC_SUBNETS" \
-  --vpc-private-subnets "$PRIVATE_SUBNETS" \
-  --managed
+#eksctl create cluster \
+ # --name EKS \
+  #--region us-east-1 \
+  #--nodegroup-name workers \
+  #--node-type t3.small \
+  #--vpc-public-subnets "$PUBLIC_SUBNETS" \
+  #--vpc-private-subnets "$PRIVATE_SUBNETS" \
+  #--managed
 
 # Output the cluster information
-echo "EKS cluster 'EKS' has been created successfully."
+#echo "EKS cluster 'EKS' has been created successfully."
