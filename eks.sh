@@ -34,6 +34,9 @@ kubectl version --client
 
 echo "AWS CLI, eksctl, and kubectl have been installed and configured successfully."
 
+hostname eks
+exec bash 
+
 # Get public and private subnet IDs
 #PUBLIC_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=public_subnet,public2_subnet" --query "Subnets[*].SubnetId" --output text)
 #PRIVATE_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=private_subnet,private2_subnet" --query "Subnets[*].SubnetId" --output text)

@@ -1,4 +1,3 @@
-sudo su -
 sudo apt-get update
 sudo apt install openjdk-17-jre -y
 curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
@@ -9,5 +8,7 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update
 sudo apt-get install jenkins -y
 sudo systemctl enable jenkins  
-sudo systemctl start jenkins 
+sudo systemctl start jenkins
+hostname master
+exec bash 
 cat /var/lib/jenkins/secrets/initialAdminPassword 
