@@ -124,6 +124,15 @@ resource "local_file" "test_key" {
     content = tls_private_key.rsa.private_key_pem
 }
 
+resource "aws_ecr_repository" "ekart" {
+    name = "ekart"
+    image_tag_mutability = "MUTABLE"
+
+    image_scanning_configuration {
+        scan_on_push = "true"
+    }
+}
+
 resource "aws_instance" "jenkins_master" {
     ami = var.ami
     instance_type = var.value_of_instance
