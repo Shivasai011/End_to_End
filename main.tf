@@ -27,7 +27,7 @@ resource "aws_subnet" "public2" {
 
 resource "aws_subnet" "private" {
     vpc_id = aws_vpc.test.id
-    cidr_block = "10.0.1.128/25"
+    cidr_block = "10.0.3.0/24"
     tags = {
         Name = "private_subnet"
     }
@@ -35,7 +35,7 @@ resource "aws_subnet" "private" {
 
 resource "aws_subnet" "private2" {
     vpc_id = aws_vpc.test.id
-    cidr_block = "10.0.2.128/25"
+    cidr_block = "10.0.4.0/24"
     tags = {
         Name = "private2_subnet"
     }
@@ -261,7 +261,7 @@ resource "aws_instance" "eks" {
 
     connection {
         type = "ssh"
-        host = aws_instance.EKS.public_ip
+        host = aws_instance.eks.public_ip
         user = "ubuntu"
         private_key = tls_private_key.rsa.private_key_openssh
     }
