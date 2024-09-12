@@ -9,6 +9,6 @@ sudo apt-get update
 sudo apt-get install jenkins -y
 sudo systemctl enable jenkins  
 sudo systemctl start jenkins
+cat /var/lib/jenkins/secrets/initialAdminPassword
 hostname master
-exec bash 
-cat /var/lib/jenkins/secrets/initialAdminPassword 
+exec bash  

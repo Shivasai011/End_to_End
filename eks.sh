@@ -34,22 +34,22 @@ kubectl version --client
 
 echo "AWS CLI, eksctl, and kubectl have been installed and configured successfully."
 
-hostname eks
-exec bash 
-
 # Get public and private subnet IDs
-#PUBLIC_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=public_subnet,public2_subnet" --query "Subnets[*].SubnetId" --output text)
-#PRIVATE_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=private_subnet,private2_subnet" --query "Subnets[*].SubnetId" --output text)
+PUBLIC_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=public_subnet,public2_subnet" --query "Subnets[*].SubnetId" --output text)
+PRIVATE_SUBNETS=$(aws ec2 describe-subnets --filters "Name=tag:Name,Values=private_subnet,private2_subnet" --query "Subnets[*].SubnetId" --output text)
 
 # Create EKS cluster
-#eksctl create cluster \
- # --name EKS \
-  #--region us-east-1 \
-  #--nodegroup-name workers \
-  #--node-type t3.small \
-  #--vpc-public-subnets "$PUBLIC_SUBNETS" \
-  #--vpc-private-subnets "$PRIVATE_SUBNETS" \
-  #--managed
+eksctl create cluster \
+  --name EKS \
+  --region us-east-1 \
+  --nodegroup-name workers \
+  --node-type t3.small \
+  --vpc-public-subnets "$PUBLIC_SUBNETS" \
+  --vpc-private-subnets "$PRIVATE_SUBNETS" \
+  --managed
 
 # Output the cluster information
-#echo "EKS cluster 'EKS' has been created successfully."
+echo "EKS cluster 'EKS' has been created successfully."
+
+hostname eks
+exec bash
